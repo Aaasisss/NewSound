@@ -48,6 +48,7 @@ dependencies:
   firebase_core: ^1.14.0
   firebase_auth: ^3.3.13
   cloud_firestore: ^3.1.11
+  json_annotation: ^4.5.0
 
   
 
@@ -62,6 +63,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  json_serializable: ^6.2.0
+  build_runner: ^2.1.10
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -81,6 +85,7 @@ flutter:
     - lib/Images/youtube_icon.png
     - lib/Images/pastors.png
     - lib/Images/map.png
+    - lib/Images/default.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

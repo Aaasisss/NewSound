@@ -86,7 +86,7 @@ class ExploreList_Blogs extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Blogs",
+              "Articles",
               style: TextStyle(fontSize: 30.0),
             ),
             Icon(
@@ -96,7 +96,7 @@ class ExploreList_Blogs extends StatelessWidget {
           ],
         ),
         onPressed: () async {
-          const url = "https://newsound.org.au/#about";
+          const url = "https://newsound.org.au/articles/";
           if (await canLaunch(url)) {
             await launch(url,
                 forceSafariVC: true, //for iOS
@@ -178,7 +178,7 @@ class ExploreList_ImNew extends StatelessWidget {
           }
         },
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(

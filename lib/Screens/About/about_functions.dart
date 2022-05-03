@@ -59,7 +59,7 @@ Widget createPasterInfo() {
 }
 
 //a function that creates contact info under maps
-Widget createContact() {
+Widget createContact(String address, String phone, String email) {
   var normalFontSize = 17.0;
   var headingFontSize = 30.0;
   return Container(
@@ -77,7 +77,7 @@ Widget createContact() {
             height: 10.0,
           ),
           Text(
-            "26-28 Stanley Street, Bankstown NSW 2200",
+            address,
             style: TextStyle(
               fontSize: normalFontSize,
             ),
@@ -97,7 +97,7 @@ Widget createContact() {
               children: [
                 Icon(Icons.phone),
                 Text(
-                  "(02) 9790 1459",
+                  phone,
                   style: TextStyle(
                     fontSize: normalFontSize,
                   ),
@@ -105,8 +105,7 @@ Widget createContact() {
               ],
             ),
             onTap: () async {
-              final phoneNumber = '(02) 9790 1459';
-              final url = 'tel:$phoneNumber';
+              final url = 'tel:$phone';
               if (await canLaunch(url)) {
                 await launch(url);
               }
@@ -127,7 +126,7 @@ Widget createContact() {
               children: [
                 Icon(Icons.email),
                 Text(
-                  "info@newsound.org.au",
+                  email,
                   style: TextStyle(
                     fontSize: normalFontSize,
                   ),
@@ -135,7 +134,7 @@ Widget createContact() {
               ],
             ),
             onTap: () async {
-              final toEmail = "info@newsound.org.au";
+              final toEmail = email;
               final subject = "New Enquiry";
               final message = "Hi there, \n\n\n\n Thank you,\n Regards,";
               final url = 'mailto:$toEmail?subject=${subject}&body=${message}';

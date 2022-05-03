@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsound/Shared/follow_us.dart';
-import 'package:newsound/main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Giving extends StatefulWidget {
   const Giving({Key? key}) : super(key: key);
@@ -10,6 +10,27 @@ class Giving extends StatefulWidget {
 }
 
 class _GivingState extends State<Giving> {
+  final _firestore = FirebaseFirestore.instance.collection('bankAccountDetail');
+  String accountName = '';
+  String accountBsb = '';
+  String accountNumber = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getInfo();
+  }
+
+  //loads the bank accound details
+  void getInfo() async {
+    final details = await _firestore.doc('accountDetails').get();
+    setState(() {
+      accountName = details.data()!['name'];
+      accountBsb = details.data()!['bsb'];
+      accountNumber = details.data()!['number'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +58,7 @@ class _GivingState extends State<Giving> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             Container(
@@ -49,37 +70,34 @@ class _GivingState extends State<Giving> {
                 height: 250.0,
                 width: 300,
                 child: Column(
-                  children: const [
-                    Padding(padding: EdgeInsets.all(20.0)),
+                  children: [
+                    const Padding(padding: EdgeInsets.all(20.0)),
                     Text(
-                      "704-922",
-                      style: TextStyle(
+                      accountBsb,
+                      style: const TextStyle(
                           fontSize: 30.0, fontWeight: FontWeight.bold),
                     ),
-                    Padding(padding: EdgeInsets.all(10.0)),
+                    const Padding(padding: EdgeInsets.all(10.0)),
                     Text(
-                      "100003078",
-                      style: TextStyle(
+                      accountNumber,
+                      style: const TextStyle(
                           fontSize: 30.0, fontWeight: FontWeight.bold),
                     ),
-                    Padding(padding: EdgeInsets.all(10.0)),
+                    const Padding(padding: EdgeInsets.all(10.0)),
                     Text(
-                      "NEW SOUND",
-                      style: TextStyle(
-                          fontSize: 30.0, fontWeight: FontWeight.bold),
+                      accountName,
+                      style: const TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.visible),
                     ),
-                    Padding(padding: EdgeInsets.all(10.0)),
-                    Text(
-                      "CHURCH",
-                      style: TextStyle(
-                          fontSize: 30.0, fontWeight: FontWeight.bold),
-                    ),
+                    const Padding(padding: EdgeInsets.all(10.0)),
                   ],
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.all(20.0)),
-            CreateFolloIcons(),
+            const Padding(padding: EdgeInsets.all(20.0)),
+            const CreateFolloIcons(),
           ],
         ),
       ),

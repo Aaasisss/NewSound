@@ -4,6 +4,7 @@ import 'package:newsound/routes.dart';
 import 'package:newsound/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_config/flutter_config.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
@@ -20,12 +21,57 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "New Sound Church",
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(primaryColor: Colors.blue),
       routes: appRoute, //app routes defined in routes.dart
-      home: ChangeNotifierProvider(
-        create: (context) => BottomNavBarState(),
-        child: const Home(),
-      ),
+      home: App(),
+    );
+  }
+}
+
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      // Initialize FlutterFire:
+      future: _initialization,
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          return const Scaffold(
+            body: Center(
+              child: Text(
+                'error!',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          );
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ChangeNotifierProvider(
+              create: (context) => BottomNavBarState(), child: const Home());
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return const Scaffold(
+          body: Center(
+            child: Text(
+              'loading...',
+              style: TextStyle(color: Colors.green),
+            ),
+          ),
+        );
+      },
     );
   }
 }
