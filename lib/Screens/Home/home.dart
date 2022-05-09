@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newsound/Screens/Explore/giving.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newsound/Models/event_model.dart';
 import 'package:newsound/Screens/Home/event.dart';
-import 'package:newsound/utilities/Keys.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,47 +16,55 @@ class _HomePageState extends State<HomePage> {
 
   Widget makeEventWidget(Event event) {
     return GestureDetector(
-      child: Container(
-        padding: EdgeInsets.all(10.0),
+      child: Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+                color: Colors.black, width: 2, style: BorderStyle.solid)),
+        shadowColor: Colors.black,
         margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
-        height: MediaQuery.of(context).size.height / 4,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: NetworkImage(
-              "${event.photoUrl}",
-            ),
-            //AssetImage('lib/Images/default.jpg'),
-          ),
-          border: Border.all(
-              color: Colors.red, width: 1.0, style: BorderStyle.solid),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(color: Colors.black26),
-              child: Column(
-                children: [
-                  Text(
-                    "${event.title} this is a demo to worship the one and only god",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30.0,
-                        overflow: TextOverflow.ellipsis),
-                  ),
-                  // Text("${event.description}"),
-                  // Text("${event.venue}"),
-                  // Text("${event.date}"),
-                  // Text("${event.time}"),
-                  // Text("${event.timeZone}"),
-                  //Text("${event.photoUrl}"),
-                ],
+        color: Colors.blueAccent,
+        elevation: 50.0,
+        child: Container(
+          //padding: EdgeInsets.all(10.0),
+          //margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
+          height: MediaQuery.of(context).size.height / 4,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                "${event.photoUrl}",
               ),
+              //AssetImage('lib/Images/default.jpg'),
             ),
-          ],
+            //borderRadius: BorderRadius.circular(10.0),
+            // border: Border.all(
+            //     color: Colors.black, width: 3.0, style: BorderStyle.solid),
+          ),
+          child: Hero(
+            tag: event.photoUrl,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Text(
+                    "${event.title} this is a demo to worship the one and only god",
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                        overflow: TextOverflow.visible),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
       onTap: () {
@@ -90,6 +94,7 @@ class _HomePageState extends State<HomePage> {
             }
 
             return ListView(
+              reverse: true,
               children: eventWidgetsList,
             );
           } else if (asyncSnapshot.hasError) {

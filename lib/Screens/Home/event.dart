@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:newsound/Models/event_model.dart';
-import 'package:newsound/main.dart';
 
 class EventPage extends StatefulWidget {
   final Event event;
@@ -17,67 +16,54 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Event')),
-      body: Container(
-        child: Column(children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 4,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage(
-                  "lib/Images/default.jpg",
-                ),
-              ),
-              border: Border.all(
-                  color: Colors.red, width: 1.0, style: BorderStyle.solid),
+      appBar: AppBar(title: const Text('Event')),
+      body: ListView(
+        children: [
+          Hero(
+            tag: widget.event.photoUrl,
+            child: Image(
+              image: NetworkImage(widget.event.photoUrl),
             ),
           ),
           Center(
             child: Text(
               "${widget.event.title} ",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ),
-          Flexible(
-              child: ListView(
-            children: [
-              Text(
-                'Venue Info:',
-                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.event.venue}",
-                style: TextStyle(fontSize: 20),
-              ),
-              Text(
-                'Date:',
-                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.event.date}",
-                style: TextStyle(fontSize: 20),
-              ),
-              Text(
-                'Time:',
-                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.event.time}, ${widget.event.timeZone} time",
-                style: TextStyle(fontSize: 20),
-              ),
-              Text(
-                'Description:',
-                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "${widget.event.description}",
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          )),
-        ]),
+          const Text(
+            'Venue Info:',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "${widget.event.venue}",
+            style: const TextStyle(fontSize: 20),
+          ),
+          const Text(
+            'Date:',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "${widget.event.date}",
+            style: const TextStyle(fontSize: 20),
+          ),
+          const Text(
+            'Time:',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "${widget.event.time}, ${widget.event.timeZone} time",
+            style: const TextStyle(fontSize: 20),
+          ),
+          const Text(
+            'Description:',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "${widget.event.description}",
+            style: const TextStyle(fontSize: 20),
+          ),
+        ],
       ),
     );
   }
