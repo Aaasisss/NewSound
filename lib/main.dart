@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:newsound/Shared/bottom_nav.dart';
+import 'package:newsound/Shared/style.dart';
 import 'package:newsound/routes.dart';
 import 'package:newsound/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
@@ -23,7 +26,113 @@ class MyApp extends StatelessWidget {
       title: "New Sound Church",
       theme: ThemeData(primaryColor: Colors.blue),
       routes: appRoute, //app routes defined in routes.dart
-      home: App(),
+      home: const WelcomeScreen(),
+    );
+  }
+}
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: InkWell(
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          child: Center(
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    child: Column(
+                      children: [
+                        const Image(
+                          image: AssetImage('lib/Images/logo.png'),
+                          height: 150.0,
+                          width: 150.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            'Life',
+                            style: GoogleFonts.dancingScript(
+                              textStyle: Theme.of(context).textTheme.headline4,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.normal,
+                              //color: Colors.amberAccent,
+                              foreground: Paint()
+                                ..style = PaintingStyle.stroke
+                                ..strokeWidth = 3
+                                ..color = Colors.black87,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            'More',
+                            style: GoogleFonts.robotoMono(
+                              fontSize: 50.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            'Abundantly',
+                            style: GoogleFonts.trispace(
+                              textStyle: Theme.of(context).textTheme.headline4,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.normal,
+                              color: Colors.amberAccent,
+                              shadows: [
+                                const Shadow(
+                                  offset: Offset(5.0, 5.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          '"I have comethat they may have life,',
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                        const Text(
+                          'and that they may have it',
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                        const Text(
+                          'more abundantly."',
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                        const Text(
+                          "- Jesus",
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        onTap: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const App()),
+          );
+        },
+      ),
     );
   }
 }
