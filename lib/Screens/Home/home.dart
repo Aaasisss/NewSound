@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
             side: BorderSide(
                 color: Colors.black, width: 2, style: BorderStyle.solid)),
         shadowColor: Colors.black,
-        margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
+        margin: const EdgeInsets.fromLTRB(5, 0, 5, 10),
         color: Colors.blueAccent,
         elevation: 50.0,
         child: Container(
@@ -77,9 +77,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("WHAT'S NEW?")),
-      ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: _firestore.snapshots(),
         builder: (context, asyncSnapshot) {
@@ -93,12 +90,28 @@ class _HomePageState extends State<HomePage> {
               eventWidgetsList.add(makeEventWidget(eventInstance));
             }
 
-            return ListView(
-              reverse: true,
-              children: eventWidgetsList,
+            return Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(
+                      left: 25.0, right: 25, top: 50),
+                  child: Center(
+                      child: Text("What's New",
+                          style: TextStyle(
+                              fontSize: 35.0,
+                              color: Colors.orange,
+                              fontWeight: FontWeight.bold))),
+                ),
+                Expanded(
+                  child: ListView(
+                    reverse: false,
+                    children: eventWidgetsList,
+                  ),
+                ),
+              ],
             );
           } else if (asyncSnapshot.hasError) {
-            return Text(
+            return const Text(
               'Error!',
               style: TextStyle(color: Colors.red),
             );

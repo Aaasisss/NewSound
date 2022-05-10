@@ -34,12 +34,21 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("About Us"))),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10.0),
         child: Center(
           child: Column(
             children: <Widget>[
+              const Padding(
+                padding:
+                    EdgeInsets.only(left: 25.0, right: 25, bottom: 25, top: 50),
+                child: Center(
+                    child: Text('About US',
+                        style: TextStyle(
+                            fontSize: 35.0,
+                            color: Colors.orange,
+                            fontWeight: FontWeight.bold))),
+              ),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.orange, width: 3),
@@ -47,25 +56,140 @@ class _AboutState extends State<About> {
                 ),
                 child: Column(
                   children: [
-                    createTextBox(
-                        "A loving and joyful multicultural church community in the heart of Bankstown, Sydney."),
-                    createTextBox(
-                        "Kingdom people who are led by God's Word and the Holy Spirit."),
-                    createTextBox(
-                        "Children of God and believers in His goodness to us all the time."),
-                    createTextBox(
-                        "Passionate about bringing the message of reconciliation, freedom, healing and deliverance to all people."),
-                    createTextBox(
-                        "We would love to see you online or in person at our 10:00am service on Sunday mornings."),
+                    Container(
+                      margin: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(color: Colors.orange, width: 3),
+                      ),
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(text: 'A'),
+                            TextSpan(
+                                text: ' loving and joyful ',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text:
+                                    'multicultural church community in the heart of Bankstown, Sydney.'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(color: Colors.orange, width: 3),
+                      ),
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Kingdom people ',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text:
+                                    "who are led by God's Word and the Holy Spirit."),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(color: Colors.orange, width: 3),
+                      ),
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Children of God ',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(
+                                text:
+                                    "and believers in His goodness to us all the time."),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(color: Colors.orange, width: 3),
+                      ),
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text:
+                                    'Passionate about bringing the message of '),
+                            TextSpan(
+                                text: 'reconciliation, freedom, healing ',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: 'and deliverance to all people.'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(color: Colors.orange, width: 3),
+                      ),
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text:
+                                    'We would love to see you online or in person at our '),
+                            TextSpan(
+                                text: '10:00am ',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: 'service on Sunday mornings.'),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-              Container(
-                child: const Text(
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: Text(
                   "PASTORS",
                   style: TextStyle(
-                    fontSize: 30.0,
+                    fontSize: 35.0,
                     fontWeight: FontWeight.bold,
+                    color: Colors.orange,
                   ),
                 ),
               ),
