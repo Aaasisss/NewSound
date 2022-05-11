@@ -20,6 +20,7 @@ Widget createPasterInfo() {
     padding: const EdgeInsets.all(5.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Container(
@@ -38,7 +39,7 @@ Widget createPasterInfo() {
                 Text(
                   '"Our desire is to see the kingdom of God demonstrated with power in our community. We like to be open to the gifts and fruits of the Holy Spirit. We are passionate to see a prophetic community that sees the world as God sees it."',
                   style: TextStyle(
-                    fontSize: 15.0,
+                    fontSize: 12.0,
                   ),
                 ),
               ],
@@ -48,7 +49,7 @@ Widget createPasterInfo() {
         const Expanded(
           child: Image(
             image: AssetImage("lib/Images/pastors.png"),
-            height: 100.0,
+            height: 130.0,
             width: 100.0,
             fit: BoxFit.cover,
           ),

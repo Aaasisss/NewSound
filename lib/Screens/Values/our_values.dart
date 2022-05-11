@@ -50,13 +50,20 @@ class _ValuesState extends State<Values> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Values"))),
       body: Center(
         child: Column(
           children: [
-            // SizedBox(
-            //   height: 500,
-            // ),
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0, right: 25, bottom: 25, top: 50),
+              child: Center(child: Text('OUR VALUES',style: TextStyle(fontSize: 35.0, color: Colors.orange, fontWeight: FontWeight.bold))),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0, right: 25, bottom: 15),
+              child: Text(
+                "Our values dictate how we play our role in God's story. Individually and as a family of faith.",
+                style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
+              ),
+            ),
             Expanded(
               child: AnimatedList(
                 scrollDirection: Axis.vertical,

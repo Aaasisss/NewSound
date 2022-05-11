@@ -48,12 +48,12 @@ class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Explore"))),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 30),
             Expanded(
               child: AnimatedList(
                 key: _exploreListKey, //key

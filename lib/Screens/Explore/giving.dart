@@ -34,10 +34,23 @@ class _GivingState extends State<Giving> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Giving")),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0, right: 25),
+              child: Center(
+                  child: Text('Giving',
+                      style: TextStyle(
+                          fontSize: 35.0,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold))),
+            ),
             Container(
               padding: EdgeInsets.all(20.0),
               child: Column(
