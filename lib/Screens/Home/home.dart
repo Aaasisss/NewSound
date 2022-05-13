@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newsound/Models/event_model.dart';
 import 'package:newsound/Screens/Home/event.dart';
@@ -19,55 +18,61 @@ class _HomePageState extends State<HomePage> {
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(
+            side: const BorderSide(
                 color: Colors.black, width: 2, style: BorderStyle.solid)),
         shadowColor: Colors.black,
-        margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
+        margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
         color: Colors.blueAccent,
         elevation: 50.0,
-        child: Container(
-          //padding: EdgeInsets.all(10.0),
-          //margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
-          height: MediaQuery.of(context).size.height / 4,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                "${event.photoUrl}",
-              ),
-              //AssetImage('lib/Images/default.jpg'),
-            ),
-            //borderRadius: BorderRadius.circular(10.0),
-            // border: Border.all(
-            //     color: Colors.black, width: 3.0, style: BorderStyle.solid),
-          ),
-          child: Hero(
-            tag: event.photoUrl,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(10.0),
+        child: Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height / 4,
+              width: MediaQuery.of(context).size.width,
+              child: Hero(
+                tag: event.photoUrl,
+                child: Image(
+                  image: NetworkImage(
+                    "${event.photoUrl}",
                   ),
-                  child: Text(
-                    "${event.title} this is a demo to worship the one and only god",
-                    style: const TextStyle(
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 4,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 0,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Text(
+                      "${event.title}",
+                      maxLines: 2,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.visible),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
       onTap: () {
+        _firestore.orderBy("serverTimeStamp", descending: true).get();
         Navigator.push(context,
             MaterialPageRoute(builder: ((context) => EventPage(event: event))));
       },
@@ -81,7 +86,8 @@ class _HomePageState extends State<HomePage> {
         title: const Center(child: Text("WHAT'S NEW?")),
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: _firestore.snapshots(),
+        stream:
+            _firestore.orderBy("serverTimeStamp", descending: true).snapshots(),
         builder: (context, asyncSnapshot) {
           if (asyncSnapshot.hasData) {
             final events = asyncSnapshot.data!.docs;
@@ -94,11 +100,10 @@ class _HomePageState extends State<HomePage> {
             }
 
             return ListView(
-              reverse: true,
               children: eventWidgetsList,
             );
           } else if (asyncSnapshot.hasError) {
-            return Text(
+            return const Text(
               'Error!',
               style: TextStyle(color: Colors.red),
             );

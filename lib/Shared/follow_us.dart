@@ -99,6 +99,9 @@ class _CreateFolloIconsState extends State<CreateFolloIcons> {
               ),
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
         ],
       )),
     );

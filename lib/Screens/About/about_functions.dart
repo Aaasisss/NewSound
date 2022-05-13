@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 //a function that returns the text widget for quotes
 Widget createTextBox(String quote) {
   return Container(
-    margin: EdgeInsets.all(5.0),
-    padding: EdgeInsets.all(10.0),
+    margin: const EdgeInsets.all(5.0),
+    padding: const EdgeInsets.all(10.0),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
       border: Border.all(color: Colors.orange, width: 3),
@@ -63,7 +63,7 @@ Widget createContact(String address, String phone, String email) {
   var normalFontSize = 17.0;
   var headingFontSize = 30.0;
   return Container(
-    padding: EdgeInsets.all(10.0),
+    padding: const EdgeInsets.all(10.0),
     child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,7 +95,7 @@ Widget createContact(String address, String phone, String email) {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.phone),
+                const Icon(Icons.phone),
                 Text(
                   phone,
                   style: TextStyle(
@@ -124,7 +124,7 @@ Widget createContact(String address, String phone, String email) {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.email),
+                const Icon(Icons.email),
                 Text(
                   email,
                   style: TextStyle(
@@ -135,8 +135,8 @@ Widget createContact(String address, String phone, String email) {
             ),
             onTap: () async {
               final toEmail = email;
-              final subject = "New Enquiry";
-              final message = "Hi there, \n\n\n\n Thank you,\n Regards,";
+              const subject = "New Enquiry";
+              const message = "Hi there, \n\n\n\n Thank you,\n Regards,";
               final url = 'mailto:$toEmail?subject=${subject}&body=${message}';
               if (await canLaunch(url)) {
                 await launch(url);

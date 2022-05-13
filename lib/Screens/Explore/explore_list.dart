@@ -169,7 +169,8 @@ class ExploreList_ImNew extends StatelessWidget {
           primary: Colors.orange,
         ),
         onPressed: () async {
-          const url = "https://newsound.org.au/#about";
+          const url =
+              "https://docs.google.com/forms/d/e/1FAIpQLSfOag3ldLEAatitaX9FABnnpv7HO5_lNWSrmCXraPmZDusUMg/viewform";
           if (await canLaunch(url)) {
             await launch(url,
                 forceSafariVC: true, //for iOS
@@ -215,7 +216,7 @@ class ExploreList_VisitWebsite extends StatelessWidget {
           primary: Colors.orange,
         ),
         onPressed: () async {
-          const url = "https://newsound.org.au/#about";
+          const url = "https://newsound.org.au/";
           if (await canLaunch(url)) {
             await launch(url,
                 forceSafariVC: true, //for iOS

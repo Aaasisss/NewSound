@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:newsound/Shared/bottom_nav.dart';
-import 'package:newsound/Shared/style.dart';
 import 'package:newsound/routes.dart';
-import 'package:newsound/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
@@ -36,6 +34,28 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const colorizeColors = [
+      Colors.purple,
+      Colors.blue,
+      Colors.yellow,
+      Colors.red,
+    ];
+
+    TextStyle colorizeTextStyle = GoogleFonts.trispace(
+      textStyle: Theme.of(context).textTheme.headline4,
+      fontSize: 50,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.normal,
+      color: Colors.amberAccent,
+      shadows: [
+        const Shadow(
+          offset: Offset(3.0, 3.0),
+          blurRadius: 3.0,
+          color: Color.fromARGB(255, 0, 0, 0),
+        ),
+      ],
+    );
+
     return Scaffold(
       body: InkWell(
         child: Container(
@@ -57,19 +77,26 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            'Life',
-                            style: GoogleFonts.dancingScript(
-                              textStyle: Theme.of(context).textTheme.headline4,
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.normal,
-                              //color: Colors.amberAccent,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 3
-                                ..color = Colors.black87,
-                            ),
+                          child: AnimatedTextKit(
+                            repeatForever: true,
+                            animatedTexts: [
+                              TypewriterAnimatedText(
+                                "Life",
+                                textStyle: GoogleFonts.dancingScript(
+                                  textStyle:
+                                      Theme.of(context).textTheme.headline4,
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.normal,
+                                  //color: Colors.amberAccent,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 3
+                                    ..color = Colors.black87,
+                                ),
+                                speed: const Duration(milliseconds: 500),
+                              )
+                            ],
                           ),
                         ),
                         Padding(
@@ -84,22 +111,17 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            'Abundantly',
-                            style: GoogleFonts.trispace(
-                              textStyle: Theme.of(context).textTheme.headline4,
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.normal,
-                              color: Colors.amberAccent,
-                              shadows: [
-                                const Shadow(
-                                  offset: Offset(5.0, 5.0),
-                                  blurRadius: 3.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ],
-                            ),
+                          child: AnimatedTextKit(
+                            totalRepeatCount: 5,
+                            animatedTexts: [
+                              ColorizeAnimatedText(
+                                "Abundantly",
+                                textStyle: colorizeTextStyle,
+                                speed: const Duration(milliseconds: 500),
+                                colors: colorizeColors,
+                              ),
+                            ],
+                            isRepeatingAnimation: true,
                           ),
                         ),
                         const Text(
