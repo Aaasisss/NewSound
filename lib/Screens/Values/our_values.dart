@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsound/Screens/Values/value_list.dart';
+import 'package:newsound/Screens/Values/values_items_list.dart';
 import 'package:newsound/Screens/Values/values_functions.dart';
 import 'package:newsound/Shared/follow_us.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
@@ -25,7 +25,7 @@ class _ValuesState extends State<Values> {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height -
-                  (MediaQuery.of(context).size.height / 5),
+                  (MediaQuery.of(context).size.height / 4),
               child: Stack(
                 children: [
                   LiquidSwipe(

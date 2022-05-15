@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -8,49 +9,138 @@ Widget createTextBox(String quote) {
     padding: const EdgeInsets.all(10.0),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      border: Border.all(color: Colors.orange, width: 3),
+      border: Border.all(color: Colors.orange, width: 1),
     ),
     child: Text(quote),
   );
 }
 
-//a function that creates paster info widget
-Widget createPasterInfo() {
+Widget createBelieveText() {
   return Container(
-    padding: const EdgeInsets.all(5.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(
-          child: Container(
-            //Pastor info
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Raed & Fadia Haddad",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  '"Our desire is to see the kingdom of God demonstrated with power in our community. We like to be open to the gifts and fruits of the Holy Spirit. We are passionate to see a prophetic community that sees the world as God sees it."',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                  ),
-                ),
+    height: 50.0,
+    child: Center(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const Text(
+            'WE BELIEVE IN ',
+            style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+          ),
+          DefaultTextStyle(
+            style: const TextStyle(
+                fontSize: 30.0,
+                color: Color(0xFFFDB301),
+                fontWeight: FontWeight.bold),
+            child: AnimatedTextKit(
+              repeatForever: true,
+              isRepeatingAnimation: true,
+              animatedTexts: [
+                RotateAnimatedText('HEALING'),
+                RotateAnimatedText('FREEDOM'),
+                RotateAnimatedText('DELIVERANCE'),
               ],
             ),
           ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget pastorsRight(
+    String name, String position, String description, String image) {
+  return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                name,
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Text(
+                  position,
+                  style: const TextStyle(
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                description,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  fontSize: 12.0,
+                ),
+              ),
+            ],
+          ),
         ),
-        const Expanded(
+        Expanded(
           child: Image(
-            image: AssetImage("lib/Images/pastors.png"),
-            height: 100.0,
-            width: 100.0,
+            image: AssetImage("lib/Images/$image.png"),
             fit: BoxFit.cover,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget pastorsLeft(
+    String name, String position, String description, String image) {
+  return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Image(
+            image: AssetImage("lib/Images/$image.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5.0),
+                child: Text(
+                  position,
+                  style: const TextStyle(
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                description,
+                style: const TextStyle(
+                  fontSize: 12.0,
+                ),
+              ),
+            ],
           ),
         ),
       ],
