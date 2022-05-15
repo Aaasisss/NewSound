@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:newsound/Shared/follow_us.dart';
 import 'about_functions.dart';
@@ -11,6 +12,26 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
+  final _firestore = FirebaseFirestore.instance.collection('churchInformation');
+  String address = '26-28 Stanley Street, Bankstown NSW 2200';
+  String phone = '(02) 9790 1459';
+  String email = 'info@newsound.org.au';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getInfo();
+  }
+
+  void getInfo() async {
+    final details = await _firestore.doc('churchInfo').get();
+    setState(() {
+      address = details.data()!['address'];
+      phone = details.data()!['phone'];
+      email = details.data()!['email'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,13 +95,12 @@ class _AboutState extends State<About> {
                   'WORSHIP LEADER',
                   'Andrew began worship leading in 2007 and has been immersed in music since a young age. He loves using music as an expression of worship. Andrew has a heart to identify and raise future leaders and has a passion to raise up worshipers who take hold of their true identity and pursue intimacy with God above all else. Although he feels most at home on keys, you’ll see him mostly these days singing and playing acoustic! Andrew is married to Vivien and they have one daughter, Caitlyn.',
                   'Andrew-Wibawa'),
-              const SizedBox(
-                height: 20.0,
-              ),
+              createMap(),
+              createContact(address, phone, email),
               const CreateFolloIcons(),
               const SizedBox(
-                height: 20.0,
-              ),
+                height: 30.0,
+              )
             ],
           ),
         ),
