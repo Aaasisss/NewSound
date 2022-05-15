@@ -13,23 +13,23 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("About Us"))),
+      appBar: AppBar(
+        title: const Center(
+          child: Text("About Us",
+              style: TextStyle(
+                  fontSize: 35.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold)),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Center(
           child: Column(
             children: <Widget>[
-              const Padding(
-                padding:
-                    EdgeInsets.only(left: 25.0, right: 25, bottom: 25, top: 50),
-                child: Center(
-                    child: Text('About US',
-                        style: TextStyle(
-                            fontSize: 35.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold))),
-              ),
-              Container(
+              SizedBox(
                 height: 50.0,
                 child: Center(
                   child: Row(
