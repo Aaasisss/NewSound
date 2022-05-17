@@ -25,7 +25,7 @@ class _ValuesState extends State<Values> {
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height -
-                  (MediaQuery.of(context).size.height / 4),
+                  (MediaQuery.of(context).size.height / 3),
               child: Stack(
                 children: [
                   LiquidSwipe(
@@ -57,15 +57,18 @@ class _ValuesState extends State<Values> {
                             ),
                             onDotClicked: (index) {
                               swipeController.animateToPage(page: index);
-                              print(swipeController.currentPage);
+                              //print(swipeController.currentPage);
                             },
                           ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
+            ),
+            const SizedBox(
+              height: 50,
             ),
             const CreateFolloIcons(),
             const CreateFeedbackSection(),

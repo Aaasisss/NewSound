@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newsound/Screens/Explore/giving.dart';
 import 'package:newsound/Shared/follow_us.dart';
+import 'package:newsound/Shared/style.dart';
+import 'package:newsound/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:provider/provider.dart';
 
 //List of the widgets on explore page
 final List<Widget> exploreItemList = [
@@ -11,11 +14,7 @@ final List<Widget> exploreItemList = [
   ExploreList_Giving(),
   ExploreList_ImNew(),
   ExploreList_VisitWebsite(),
-  Container(
-    height: 150.0,
-    margin: EdgeInsets.all(10.0),
-    child: CreateFolloIcons(),
-  ),
+  CreateFolloIcons(),
 ];
 
 //"Dark and light mode" list item
@@ -34,36 +33,47 @@ class _ExploreList_ModesState extends State<ExploreList_Modes> {
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: Colors.orange,
+        color: fontColors['theme'],
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           onPrimary: Colors.black,
-          primary: Colors.orange,
+          primary: fontColors['theme'],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               "Dark Mode",
               style: TextStyle(fontSize: 30.0),
             ),
-            Icon(
-              Icons.toggle_off,
-              size: 30.0,
-            ),
+            createToggleButton(),
           ],
         ),
-        onPressed: () {
-          print("hey");
-        },
+        onPressed: () {},
       ),
     );
   }
 }
 
-//"Blogs" list item
+class createToggleButton extends StatelessWidget {
+  const createToggleButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    return Switch.adaptive(
+      value: themeProvider.isDarkMode,
+      onChanged: (value) {
+        //final provider = Provider.of<ThemeProvider>(context, listen: false);
+        themeProvider.toggleTheme(value);
+      },
+    );
+  }
+}
+
+//"Articles" list item
 class ExploreList_Blogs extends StatelessWidget {
   const ExploreList_Blogs({Key? key}) : super(key: key);
 
@@ -74,17 +84,17 @@ class ExploreList_Blogs extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: Colors.orange,
+        color: fontColors['theme'],
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           onPrimary: Colors.black,
-          primary: Colors.orange,
+          primary: fontColors['theme'],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               "Articles",
               style: TextStyle(fontSize: 30.0),
@@ -120,17 +130,17 @@ class ExploreList_Giving extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: Colors.orange,
+        color: fontColors['theme'],
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           onPrimary: Colors.black,
-          primary: Colors.orange,
+          primary: fontColors['theme'],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               "Giving",
               style: TextStyle(fontSize: 30.0),
@@ -161,12 +171,12 @@ class ExploreList_ImNew extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: Colors.orange,
+        color: fontColors['theme'],
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           onPrimary: Colors.black,
-          primary: Colors.orange,
+          primary: fontColors['theme'],
         ),
         onPressed: () async {
           const url =
@@ -181,7 +191,7 @@ class ExploreList_ImNew extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               "I'm New",
               style: TextStyle(fontSize: 30.0),
@@ -208,12 +218,12 @@ class ExploreList_VisitWebsite extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: Colors.orange,
+        color: fontColors['theme'],
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           onPrimary: Colors.black,
-          primary: Colors.orange,
+          primary: fontColors['theme'],
         ),
         onPressed: () async {
           const url = "https://newsound.org.au/";
@@ -227,7 +237,7 @@ class ExploreList_VisitWebsite extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               "Visit Website",
               style: TextStyle(fontSize: 30.0),

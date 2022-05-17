@@ -49,26 +49,17 @@ class _ExploreState extends State<Explore> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Center(child: Text("Explore"))),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: AnimatedList(
-                key: _exploreListKey, //key
-                padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 30.0),
-                initialItemCount: exploreList.length,
-                itemBuilder: (context, index, animation) {
-                  return SlideTransition(
-                    child: exploreList[index],
-                    position: animation.drive(_offSet),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+      body: AnimatedList(
+        physics: BouncingScrollPhysics(),
+        key: _exploreListKey, //key
+        padding: const EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 30.0),
+        initialItemCount: exploreList.length,
+        itemBuilder: (context, index, animation) {
+          return SlideTransition(
+            child: exploreList[index],
+            position: animation.drive(_offSet),
+          );
+        },
       ),
     );
   }

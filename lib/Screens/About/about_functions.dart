@@ -24,11 +24,11 @@ Widget createBelieveText() {
         children: <Widget>[
           const Text(
             'WE BELIEVE IN ',
-            style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
           ),
           DefaultTextStyle(
             style: const TextStyle(
-                fontSize: 30.0,
+                fontSize: 25.0,
                 color: Color(0xFFFDB301),
                 fontWeight: FontWeight.bold),
             child: AnimatedTextKit(
@@ -153,7 +153,7 @@ Widget createContact(String address, String phone, String email) {
   var normalFontSize = 17.0;
   var headingFontSize = 30.0;
   return Container(
-    padding: const EdgeInsets.all(10.0),
+    padding: const EdgeInsets.all(5.0),
     child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:newsound/Shared/bottom_nav.dart';
 import 'package:newsound/routes.dart';
+import 'package:newsound/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,15 +19,21 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "New Sound Church",
-      theme: ThemeData(primaryColor: Colors.blue),
-      routes: appRoute, //app routes defined in routes.dart
-      home: const WelcomeScreen(),
-    );
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      builder: (context, _) {
+        final themeProvidor = Provider.of<ThemeProvider>(context);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "New Sound Church",
+          themeMode: themeProvidor.themeMode,
+          theme: ThemeModes.lightTheme,
+          darkTheme: ThemeModes.darkTheme,
+
+          routes: appRoute, //app routes defined in routes.dart
+          home: const WelcomeScreen(),
+        );
+      });
 }
 
 class WelcomeScreen extends StatelessWidget {
@@ -56,6 +63,7 @@ class WelcomeScreen extends StatelessWidget {
       ],
     );
 
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       body: InkWell(
         child: Container(
@@ -88,11 +96,13 @@ class WelcomeScreen extends StatelessWidget {
                                   fontSize: 50,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.normal,
-                                  //color: Colors.amberAccent,
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
                                     ..strokeWidth = 3
-                                    ..color = Colors.black87,
+                                    ..color = themeProvider.themeMode ==
+                                            ThemeMode.dark
+                                        ? Colors.white
+                                        : Colors.black87,
                                 ),
                                 speed: const Duration(milliseconds: 500),
                               )
