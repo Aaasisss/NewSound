@@ -42,7 +42,7 @@ class _CreateFeedbackSectionState extends State<CreateFeedbackSection> {
               maxLines: null,
               decoration: const InputDecoration(
                   border: const OutlineInputBorder(),
-                  hintText: "Write your feedback"),
+                  hintText: "We appreciate your feedback"),
             ),
           ),
         ),

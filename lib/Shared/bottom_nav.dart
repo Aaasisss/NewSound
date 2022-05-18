@@ -3,7 +3,7 @@ import 'package:newsound/Screens/About/about_us.dart';
 import 'package:newsound/Screens/Explore/Explore.dart';
 import 'package:newsound/Screens/Home/home.dart';
 import 'package:newsound/Screens/Values/our_values.dart';
-import 'package:newsound/Screens/Watch/Watch.dart';
+import 'package:newsound/Screens/Watch/watch.dart';
 import 'package:provider/provider.dart';
 
 class BottomNavBarState extends ChangeNotifier {
@@ -47,13 +47,8 @@ class _CreateBottomNavBarState extends State<CreateBottomNavBar> {
   Widget build(BuildContext context) {
     var state = context.watch<BottomNavBarState>(); //creating state
     return BottomNavigationBar(
-      //type: BottomNavigationBarType.fixed,
-      //backgroundColor: Colors.black,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white70,
-      //iconSize: 35.0,
-      //unselectedLabelStyle: const TextStyle(color: Colors.white70),
-      //selectedLabelStyle: const TextStyle(color: Colors.red),
       selectedIconTheme: const IconThemeData(
         size: 35.0,
         color: Colors.white,

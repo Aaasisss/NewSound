@@ -67,6 +67,13 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   json_serializable: ^6.2.0
   build_runner: ^2.1.10
+  flutter_launcher_icons: "^0.9.2"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "lib/Images/logo.png" 
 
 
 # For information on the generic Dart part of this file, see the
@@ -85,7 +92,6 @@ flutter:
     - lib/Images/logo.png
     - lib/Images/value_icon.png
     - lib/Images/youtube_icon.png
-    - lib/Images/pastors.png
     - lib/Images/map.png
     - lib/Images/default.jpg
     - lib/Images/Andrew-Wibawa.png

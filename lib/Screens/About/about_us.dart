@@ -34,7 +34,7 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("About Us"))),
+      appBar: AppBar(title: const Center(child: Text("ABOUT US"))),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(0),
         child: Center(

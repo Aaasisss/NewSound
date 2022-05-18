@@ -19,7 +19,7 @@ class _ValuesState extends State<Values> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Values"))),
+      appBar: AppBar(title: const Center(child: Text("VALUES"))),
       body: SingleChildScrollView(
         child: Column(
           children: [

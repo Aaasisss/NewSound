@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newsound/Models/event_model.dart';
 import 'package:newsound/Screens/Home/event.dart';
+import 'package:newsound/Shared/theme.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,9 +19,13 @@ class _HomePageState extends State<HomePage> {
     return GestureDetector(
       child: Card(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: const BorderSide(
-                color: Colors.black, width: 2, style: BorderStyle.solid)),
+          borderRadius: BorderRadius.circular(10),
+          side: const BorderSide(
+            color: Color(0xFFFDB301),
+            width: 2,
+            style: BorderStyle.solid,
+          ),
+        ),
         shadowColor: Colors.black,
         margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
         color: Colors.blueAccent,
@@ -27,6 +33,9 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: [
             Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
               height: MediaQuery.of(context).size.height / 4,
               width: MediaQuery.of(context).size.width,
               child: Hero(

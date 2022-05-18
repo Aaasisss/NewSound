@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:newsound/Shared/bottom_nav.dart';
-import 'package:newsound/routes.dart';
-import 'package:newsound/theme.dart';
+import 'package:newsound/Shared/routes.dart';
+import 'package:newsound/Shared/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
           themeMode: themeProvidor.themeMode,
           theme: ThemeModes.lightTheme,
           darkTheme: ThemeModes.darkTheme,
-
           routes: appRoute, //app routes defined in routes.dart
           home: const WelcomeScreen(),
         );

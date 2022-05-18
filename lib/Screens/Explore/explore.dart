@@ -48,7 +48,7 @@ class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text("Explore"))),
+      appBar: AppBar(title: const Center(child: Text("EXPLORE"))),
       body: AnimatedList(
         physics: BouncingScrollPhysics(),
         key: _exploreListKey, //key
