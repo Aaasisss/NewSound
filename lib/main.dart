@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:newsound/Shared/bottom_nav.dart';
 import 'package:newsound/Shared/routes.dart';
-import 'package:newsound/Shared/theme.dart';
+import 'package:newsound/Shared/style.dart';
+import 'package:newsound/Shared/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -98,10 +99,7 @@ class WelcomeScreen extends StatelessWidget {
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
                                     ..strokeWidth = 3
-                                    ..color = themeProvider.themeMode ==
-                                            ThemeMode.dark
-                                        ? Colors.white
-                                        : Colors.black87,
+                                    ..color = Colors.blue,
                                 ),
                                 speed: const Duration(milliseconds: 500),
                               )
@@ -115,6 +113,7 @@ class WelcomeScreen extends StatelessWidget {
                             style: GoogleFonts.robotoMono(
                               fontSize: 50.0,
                               fontWeight: FontWeight.bold,
+                              color: fontColors['theme'],
                             ),
                           ),
                         ),

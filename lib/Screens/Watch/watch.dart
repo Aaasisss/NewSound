@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,7 +25,7 @@ class _WatchState extends State<Watch> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('WATCH'),
+        title: const Center(child: Text('WATCH')),
       ),
       body: Container(
         child: ListView(
@@ -39,8 +41,8 @@ class _WatchState extends State<Watch> {
                     width: containerHeight,
                     margin: const EdgeInsets.all(10),
                     child: const CircleAvatar(
-                      child: const Image(
-                        image: const AssetImage("lib/Images/logo.png"),
+                      child: Image(
+                        image: AssetImage("lib/Images/logo.png"),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -90,12 +92,12 @@ Widget createCard(String title, String url, double height) {
       //elevation: 50,
       child: Container(
         height: height,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
+        decoration: const BoxDecoration(
+            gradient: const LinearGradient(colors: [
           Color.fromARGB(255, 155, 190, 250),
-          Color.fromARGB(255, 247, 223, 136),
+          const Color.fromARGB(255, 247, 223, 136),
           Color.fromARGB(255, 249, 103, 103),
-          Color.fromARGB(255, 147, 250, 200),
+          const Color.fromARGB(255, 147, 250, 200),
         ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
         //margin: EdgeInsets.all(50),
         child: Center(

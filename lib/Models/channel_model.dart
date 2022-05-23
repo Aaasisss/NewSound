@@ -1,3 +1,5 @@
+//used later for youtube purposes
+
 import 'video_model.dart';
 
 class Channel {

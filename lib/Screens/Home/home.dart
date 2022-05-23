@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newsound/Models/event_model.dart';
 import 'package:newsound/Screens/Home/event.dart';
-import 'package:newsound/Shared/theme.dart';
+import 'package:newsound/Shared/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {

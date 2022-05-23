@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newsound/Screens/Explore/giving.dart';
 import 'package:newsound/Shared/follow_us.dart';
 import 'package:newsound/Shared/style.dart';
-import 'package:newsound/Shared/theme.dart';
+import 'package:newsound/Shared/theme_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:provider/provider.dart';
 

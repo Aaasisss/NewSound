@@ -176,7 +176,7 @@ Widget createContact(String address, String phone, String email) {
             height: 10.0,
           ),
           Text(
-            "Pone",
+            "Phone",
             style: TextStyle(
                 fontSize: headingFontSize, fontWeight: FontWeight.bold),
           ),

@@ -1,5 +1,4 @@
 import 'package:newsound/Screens/Explore/giving.dart';
-import 'package:newsound/Screens/Watch/video_playlist.dart';
 import '../Screens/About/about_us.dart';
 import '../Screens/Explore/explore.dart';
 import '../Screens/Home/home.dart';
@@ -13,5 +12,4 @@ var appRoute = {
   "/values": (context) => const Values(),
   "/watch": (context) => const Watch(),
   "/giving": (context) => const Giving(),
-  "/playlist": (context) => const Playlist(),
 };
