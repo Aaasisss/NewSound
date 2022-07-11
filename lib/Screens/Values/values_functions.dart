@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:newsound/Services/api_service.dart';
 
 class CreateFeedbackSection extends StatefulWidget {
   const CreateFeedbackSection({Key? key}) : super(key: key);
@@ -12,6 +14,18 @@ class _CreateFeedbackSectionState extends State<CreateFeedbackSection> {
   final _firestore = FirebaseFirestore.instance.collection("feedback");
   final feedbackController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+  //loads env files for authentication
+  // Future<void> loadEnvFile() async {
+  //   await dotenv.load();
+  // }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,22 +61,33 @@ class _CreateFeedbackSectionState extends State<CreateFeedbackSection> {
           ),
         ),
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             final isValid = formKey.currentState!.validate();
             if (isValid) {
-              _firestore.add({
-                'feedback': feedbackController.text,
-                'serverTimeStamp': FieldValue.serverTimestamp()
-              }).then((currentFeedbck) {
-                //reset the field
-                setState(() {
-                  feedbackController.clear();
+              
+              AuthService().signInWithEmail(
+                  FlutterConfig.get('EMAIL'), FlutterConfig.get('PASSWORD'));
+              try {
+                _firestore.add({
+                  'feedback': feedbackController.text,
+                  'serverTimeStamp': FieldValue.serverTimestamp()
+                }).then((currentFeedbck) {
+                  //reset the field
+                  setState(() {
+                    feedbackController.clear();
+                  });
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Feedback sent."),
+                    backgroundColor: Colors.greenAccent,
+                  ));
                 });
+              } on FirebaseException catch (e) {
+                print(e);
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text("Feedback sent."),
-                  backgroundColor: Colors.greenAccent,
+                  content: Text("Feedback cannot be sent.."),
+                  backgroundColor: Colors.redAccent,
                 ));
-              });
+              }
             }
           },
           child: const Text("Send"),

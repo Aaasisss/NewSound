@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>529603849422-51rneegrlqfpv2e3q1h2ogh1jg9v74aa.apps.googleusercontent.com</string>
+	<string>529603849422-jnmg0e0a7tp018ea7h0r62hdsg7st152.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.529603849422-51rneegrlqfpv2e3q1h2ogh1jg9v74aa</string>
+	<string>com.googleusercontent.apps.529603849422-jnmg0e0a7tp018ea7h0r62hdsg7st152</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>529603849422-iot6cp10r6e7na1tbcg4benuj8bauol6.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDCqpMBdbtVnTCgmPm1eK7eeB--1bvBpEU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.newsound</string>
+	<string>com.newsound.church</string>
 	<key>PROJECT_ID</key>
 	<string>new-sound-church</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:529603849422:ios:543116499b528fa614349f</string>
+	<string>1:529603849422:ios:fa4a19d4ed7782aa14349f</string>
 </dict>
 </plist>

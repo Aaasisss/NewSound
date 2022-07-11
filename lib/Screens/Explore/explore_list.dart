@@ -9,12 +9,12 @@ import 'package:provider/provider.dart';
 
 //List of the widgets on explore page
 final List<Widget> exploreItemList = [
-  ExploreList_Modes(),
-  ExploreList_Blogs(),
-  ExploreList_Giving(),
-  ExploreList_ImNew(),
-  ExploreList_VisitWebsite(),
-  CreateFolloIcons(),
+  const ExploreList_Modes(),
+  const ExploreList_Blogs(),
+  const ExploreList_Giving(),
+  const ExploreList_ImNew(),
+  const ExploreList_VisitWebsite(),
+  const CreateFolloIcons(),
 ];
 
 //"Dark and light mode" list item
@@ -30,7 +30,7 @@ class _ExploreList_ModesState extends State<ExploreList_Modes> {
   Widget build(BuildContext context) {
     return Container(
       height: 75.0,
-      margin: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: fontColors['theme'],
@@ -81,7 +81,7 @@ class ExploreList_Blogs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 75.0,
-      margin: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: fontColors['theme'],
@@ -127,7 +127,7 @@ class ExploreList_Giving extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 75.0,
-      margin: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: fontColors['theme'],
@@ -168,7 +168,7 @@ class ExploreList_ImNew extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 75.0,
-      margin: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: fontColors['theme'],
@@ -215,7 +215,7 @@ class ExploreList_VisitWebsite extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 75.0,
-      margin: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: fontColors['theme'],

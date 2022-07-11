@@ -1,4 +1,4 @@
-package com.example.newsound
+package com.newsound.church
 
 import io.flutter.embedding.android.FlutterActivity
 

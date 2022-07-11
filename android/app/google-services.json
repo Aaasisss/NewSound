@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:529603849422:android:61766b834e3954b914349f",
+        "mobilesdk_app_id": "1:529603849422:android:52504fc643acfcfc14349f",
         "android_client_info": {
-          "package_name": "com.example.newsound"
+          "package_name": "com.example.newsound_admin"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "529603849422-iot6cp10r6e7na1tbcg4benuj8bauol6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.newsound_admin",
+            "certificate_hash": "ebf35905597707be74f31960050dbad5247e430b"
+          }
+        },
         {
           "client_id": "529603849422-875hs6nai1im9sbh0orovd5u1ahr195i.apps.googleusercontent.com",
           "client_type": 3
@@ -43,9 +51,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:529603849422:android:52504fc643acfcfc14349f",
+        "mobilesdk_app_id": "1:529603849422:android:f97663a35d89dfcf14349f",
         "android_client_info": {
-          "package_name": "com.example.newsound_admin"
+          "package_name": "com.newsound.church"
         }
       },
       "oauth_client": [

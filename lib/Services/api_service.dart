@@ -4,6 +4,8 @@ import 'package:flutter_config/flutter_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:newsound/Models/channel_model.dart';
 import 'package:newsound/Models/video_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:math';
 
 class APIService {
   APIService._instantiate();
@@ -81,6 +83,18 @@ class APIService {
       return videos;
     } else {
       throw json.decode(response.body)['error']['message'];
+    }
+  }
+}
+
+class AuthService {
+
+  Future<void> signInWithEmail(String email, String password) async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
     }
   }
 }

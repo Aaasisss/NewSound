@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.newsound">
+    package="com.newsound.church">
     <queries>
   <!-- If your app opens https URLs -->
   <intent>
@@ -23,9 +23,9 @@
   </intent>
 </queries>
    <application
-        android:label="newsound"
+        android:label="New Sound Church"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

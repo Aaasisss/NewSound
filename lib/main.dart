@@ -13,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
   await FlutterConfig.loadEnvVariables();
 
+
   runApp(const MyApp());
 }
 
@@ -197,6 +198,7 @@ class _AppState extends State<App> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
+
           return ChangeNotifierProvider(
               create: (context) => BottomNavBarState(), child: const Home());
         }

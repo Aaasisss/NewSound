@@ -48,3 +48,5 @@ app.*.map.json
 
 lib/utilities/keys.dart
 .env
+key.properties
+app/upload-keystore.jks
